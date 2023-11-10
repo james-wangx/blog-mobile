@@ -1,4 +1,41 @@
 body {
     width: 390px;
     height: 844px;
+    font-size: 20px;
+}
+
+/* font
+   ===========================================================================*/
+.font-small {
+    font-size: 16px;
+}
+
+/* border
+   ===========================================================================*/
+.border-bottom {
+    border-bottom: 1px solid darkgray;
+    border-collapse: collapse;
+}
+
+/* margin
+   ===========================================================================*/
+.margin-top-large {
+    margin-top: 20px;
+}
+
+.margin-bottom-small {
+    margin-bottom: 5px;
+}
+
+/* margin
+   ===========================================================================*/
+.padding-bottom-small {
+    padding-bottom: 5px;
+}
+
+/* flex
+   ===========================================================================*/
+.space-between {
+    display: flex;
+    justify-content: space-between;
 }

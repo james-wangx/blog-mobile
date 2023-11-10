@@ -6,9 +6,10 @@ const handleResponse = function () {
     if (request.readyState === XMLHttpRequest.DONE) {
         if (request.status === 200) {
             const response = JSON.parse(request.responseText);
-            alert(response.message);
             if (response.status === 200) {
                 window.location.href = "index.php";
+            } else {
+                alert(response.message);
             }
         } else {
             alert("请求出现了问题。");
