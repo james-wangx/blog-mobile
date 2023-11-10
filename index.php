@@ -29,11 +29,12 @@ $conn = connect_mysql();
             echo "&nbsp;&nbsp;&nbsp;&nbsp;";
             echo "<button id='logout'>退出登录</button>";
         } else {
-            echo "<button id='logout'>登录</button>";
+            echo "<button id='login'>登录</button>";
         }
         ?>
     </div>
   </nav>
+  <script src="static/js/nav.js"></script>
   <hr>
   <main>
       <?php
@@ -47,10 +48,10 @@ $conn = connect_mysql();
               $update_time = $row["update_time"];
               // 标题行
               echo "<div class='margin-top-large margin-bottom-small'>";
-              echo "<a href='detail.php?id=$id'>$title</a>";
+              echo "<a href='detail.php?id=$id'><h2>$title</h2></a>";
               echo "</div>";
               // 信息行
-              echo "<div class='font-small border-bottom space-between padding-bottom-small'>";
+              echo "<div class='border-bottom space-between padding-bottom-small'>";
               $sql = "SELECT `username` FROM `user` WHERE `id` = ?";
               $username = query_one_str($conn, $sql, $author_id, "username");
               $sql = "SELECT `name` FROM `type` WHERE `id` = ?";
@@ -62,7 +63,6 @@ $conn = connect_mysql();
       }
       ?>
   </main>
-  <script src="static/js/index.js"></script>
 </body>
 </html>
 
