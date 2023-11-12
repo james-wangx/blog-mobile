@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <title>登录</title>
+  <title>注册</title>
   <link rel="stylesheet" href="static/css/normalize.css">
   <link rel="stylesheet" href="static/css/style.css">
 </head>
@@ -22,11 +22,14 @@
     </label>
     <br>
     <br>
-    <button class="login">登录</button>
+    <label for="password2">
+      确认密码
+      <input id="password2" type="password" name="password" required>
+    </label>
     <br>
     <br>
-    <a href="register.html">没有账号？注册一个👈</a>
+    <button id="register">注册</button>
   </main>
-  <script type="module" src="static/js/login.js"></script>
+  <script type="module" src="static/js/register.js"></script>
 </body>
 </html>
