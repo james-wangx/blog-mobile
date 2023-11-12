@@ -18,7 +18,7 @@ $conn = connect_mysql();
   <link rel="stylesheet" href="static/css/style.css">
 </head>
 <body>
-  <nav class="space-between">
+  <nav class="space-between" style="font-size: 20px">
     <div class="nav-left">博客</div>
     <div class="nav-right">
         <?php
@@ -34,7 +34,7 @@ $conn = connect_mysql();
         ?>
     </div>
   </nav>
-  <script src="static/js/nav.js"></script>
+  <script type="module" src="static/js/nav.js"></script>
   <hr>
   <main>
       <?php

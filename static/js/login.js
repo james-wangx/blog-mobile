@@ -1,3 +1,5 @@
+import {ROOT} from "./config.js";
+
 const btnLogin = document.querySelector(".login");
 
 const request = new XMLHttpRequest();
@@ -22,7 +24,7 @@ btnLogin.addEventListener("click", () => {
     const password = document.getElementById("password").value;
 
     request.onreadystatechange = handleResponse;
-    request.open("POST", "api/login.php");
+    request.open("POST", `${ROOT}/api/login.php`);
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send(`username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`);
 });

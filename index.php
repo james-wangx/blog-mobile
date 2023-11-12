@@ -18,7 +18,7 @@ $conn = connect_mysql();
   <link rel="stylesheet" href="static/css/style.css">
 </head>
 <body>
-  <nav class="space-between">
+  <nav class="space-between" style="font-size: 20px">
     <div class="nav-left">博客</div>
     <div class="nav-right">
         <?php
@@ -28,13 +28,15 @@ $conn = connect_mysql();
             echo "<span>你好👋 $username</span>";
             echo "&nbsp;&nbsp;&nbsp;&nbsp;";
             echo "<button id='logout'>退出登录</button>";
+            echo "&nbsp;";
+            echo "<button id='admin'>后台</button>";
         } else {
             echo "<button id='login'>登录</button>";
         }
         ?>
     </div>
   </nav>
-  <script src="static/js/nav.js"></script>
+  <script type="module" src="static/js/nav.js"></script>
   <hr>
   <main>
       <?php
