@@ -46,8 +46,8 @@ $conn = connect_mysql();
           echo "<button onclick=" . "window.location.href='users.php'" . ">用户管理</button>";
         }
         ?>
-      <button>文章管理</button>
-      <button>分类管理</button>
+      <button onclick="window.location.href='types.php'">文章管理</button>
+      <button onclick="window.location.href='types.php'">分类管理</button>
     </div>
   </main>
 </body>

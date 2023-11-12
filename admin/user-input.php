@@ -11,8 +11,8 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
     // 判断当前页面是 修改页面 还是 新增页面
     if (isset($_GET["id"])) {
         $update = true;
-        $userid = $_GET["id"];
-        $sql = "SELECT * FROM `user` WHERE `id` = '$userid'";
+        $id = $_GET["id"];
+        $sql = "SELECT * FROM `user` WHERE `id` = '$id'";
         $result = $conn->query($sql);
 
         if ($result->num_rows === 1) {
@@ -35,8 +35,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $gender = $_POST["gender"];
 
     // 判断提交的表单将进行 修改 还是 新增
-    if (isset($_POST["userid"])) {
-        $userid = $_POST["userid"];
+    if (isset($_POST["id"])) {
+        $id = $_POST["id"];
         $join_time = $_POST["join_time"];
         $sql = "UPDATE `user` SET 
                   `username` = '$username', 
@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                   `age` = $age, 
                   `gender` = '$gender', 
                   `join_time` = '$join_time' 
-              WHERE `id` = '$userid'";
+              WHERE `id` = '$id'";
         $conn->query($sql);
     } else {
         $sql = "INSERT INTO `user` (`id`, `username`, `password`, `role`, `age`, `gender`) 
@@ -88,7 +88,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <form action="user-input.php" method="post">
         <?php
         if ($update) {
-            echo "<input type='hidden' name='userid' value='$userid'>";
+            echo "<input type='hidden' name='id' value='$id'>";
         }
         ?>
       <label for="username">
@@ -99,7 +99,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       <br>
       <label for="password">
         密码
-        <input id="password" type="text" name="password" value="<?php if ($update) echo $username; ?>" required>
+        <input id="password" type="text" name="password" value="<?php if ($update) echo $password; ?>" required>
       </label>
       <br>
       <br>

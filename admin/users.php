@@ -71,7 +71,7 @@ if (isset($_GET["id"])) {
           $result = $conn->query($sql);
           if ($result->num_rows > 0) {
               while ($row = $result->fetch_assoc()) {
-                  $userid = $row["id"];
+                  $id = $row["id"];
                   $username = $row["username"];
                   $password = $row["password"];
                   $role = $row["role"];
@@ -81,8 +81,8 @@ if (isset($_GET["id"])) {
                   echo "<td>$password</td>";
                   echo "<td>$role</td>";
                   echo "<td>$join_time</td>";
-                  echo "<td style='padding: 0;'><a href='user-input.php?id=$userid'>修改</a>&nbsp;
-                        <a href='users.php?id=$userid' '>删除</a></td>";
+                  echo "<td style='padding: 0;'><a href='user-input.php?id=$id'>修改</a>&nbsp;
+                        <a href='users.php?id=$id' '>删除</a></td>";
                   echo "</tr>";
               }
           }
