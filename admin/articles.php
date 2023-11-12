@@ -63,7 +63,17 @@ if (isset($_GET["id"])) {
       </thead>
       <tbody>
           <?php
-          $sql = "SELECT `id`, `title` FROM `article` ORDER BY `update_time` DESC ";
+          $userid = $_SESSION["user_id"];
+          $sql = "SELECT `role` FROM `user` WHERE `id` = '$userid'";
+          $role = $conn->query($sql)->fetch_assoc()["role"];
+
+          // 非管理员只能修改自己的文章
+          if ($role === "admin") {
+              $sql = "SELECT `id`, `title` FROM `article` ORDER BY `update_time` DESC ";
+          } else {
+              $sql = "SELECT `id`, `title` FROM `article` WHERE `author_id` = '$userid' ORDER BY `update_time` DESC ";
+          }
+
           $result = $conn->query($sql);
           if ($result->num_rows > 0) {
               while ($row = $result->fetch_assoc()) {

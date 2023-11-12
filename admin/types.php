@@ -54,7 +54,6 @@ if (isset($_GET["id"])) {
       <h2>分类列表</h2>
       <a style="display: flex; align-items: center;" href="type-input.php">添加分类</a>
     </div>
-
     <table>
       <thead>
         <tr>

@@ -108,7 +108,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         作者
         <select id="author" name="author_id">
             <?php
-            $sql = "SELECT `id`, `username` FROM `user` ORDER BY `join_time`";
+            $userid = $_SESSION["user_id"];
+            $sql = "SELECT `role` FROM `user` WHERE `id` = '$userid'";
+            $role = $conn->query($sql)->fetch_assoc()["role"];
+
+            // 非管理员不可以添加用户
+            if ($role === "admin") {
+                $sql = "SELECT `id`, `username` FROM `user` ORDER BY `join_time`";
+            } else {
+                $sql = "SELECT `id`, `username` FROM `user` WHERE `id` = '$userid' ORDER BY `join_time`";
+            }
             $result = $conn->query($sql);
             // 如果是修改页面，默认显示当前作者
             if ($update) {

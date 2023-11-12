@@ -36,17 +36,17 @@ $conn = connect_mysql();
     <h2>欢迎来到博客后台页面</h2>
     <h3>您可以进行如下操作：</h3>
     <div class="space-between">
+      <button onclick="window.location.href='users.php'">用户管理</button>
         <?php
-        $user_id = $_SESSION["user_id"];
-        $sql = "SELECT `role` FROM `user` WHERE `id` = '$user_id'";
-        $result = $conn->query($sql);
-        $row = $result->fetch_assoc();
-        $role = $row["role"];
+        $userid = $_SESSION["user_id"];
+        $sql = "SELECT `role` FROM `user` WHERE `id` = '$userid'";
+        $role = $conn->query($sql)->fetch_assoc()["role"];
+
+        // 非管理员不可以进行分类管理
         if ($role === "admin") {
-          echo "<button onclick=" . "window.location.href='users.php'" . ">用户管理</button>";
+            echo "<button onclick=" . " window.location.href='types.php'" . ">分类管理</button>";
         }
         ?>
-      <button onclick="window.location.href='types.php'">分类管理</button>
       <button onclick="window.location.href='articles.php'">文章管理</button>
     </div>
   </main>

@@ -52,7 +52,16 @@ if (isset($_GET["id"])) {
   <main>
     <div class="space-between">
       <h2>用户列表</h2>
-      <a style="display: flex; align-items: center;" href="user-input.php">添加用户</a>
+        <?php
+        $userid = $_SESSION["user_id"];
+        $sql = "SELECT `role` FROM `user` WHERE `id` = '$userid'";
+        $role = $conn->query($sql)->fetch_assoc()["role"];
+
+        // 非管理员不可以添加用户
+        if ($role === "admin") {
+            echo "<a style='display: flex; align-items: center;' href='user-input.php'>添加用户</a>";
+        }
+        ?>
     </div>
 
     <table>
@@ -67,7 +76,12 @@ if (isset($_GET["id"])) {
       </thead>
       <tbody>
           <?php
-          $sql = "SELECT * FROM `user` ORDER BY `join_time`";
+          // 非管理员不能修改其他用户
+          if ($role === "admin") {
+              $sql = "SELECT * FROM `user` ORDER BY `join_time`";
+          } else {
+              $sql = "SELECT * FROm `user` WHERE `id` = '$userid'";
+          }
           $result = $conn->query($sql);
           if ($result->num_rows > 0) {
               while ($row = $result->fetch_assoc()) {
